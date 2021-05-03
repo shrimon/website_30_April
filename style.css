@@ -9,11 +9,22 @@
   border-radius: 4px;
   padding: 8px 16px;
 }
+
+.menu-list:hover {
+color: blue;
+cursor: pointer;
+}
 .selected-category {
   background-color: black;
   color: #fff;
   cursor: pointer;
 }
+
+.selected-category:hover {
+  color: grey;
+  cursor: pointer;
+}
+
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
