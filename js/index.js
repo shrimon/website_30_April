@@ -8,7 +8,6 @@ var productList = [
      {
         name: "Bag",
         price: 200,
-        topProduct: true,
         category : "Bag",
         imgUrl : "./images/product4.jpg"
     },
@@ -27,28 +26,24 @@ var productList = [
      {
         name: "Shoe",
         price: 685,
-        topProduct: true,
         category: "Shoe",
         imgUrl : "./images/product9.jpg"
     },
     {
         name: "Suit",
         price: 610,
-        topProduct: true,
         category: "Suit",
         imgUrl : "./images/product5.jpg"
     },
     {
         name: "Bag",
         price: 276,
-        topProduct: true,
         category: "Bag",
         imgUrl : "./images/product7.jpg"
     },
     {
         name: "Shoe",
         price: 450,
-        topProduct: true,
         category: "Shoe",
         imgUrl : "./images/product10.jpg"
     },
@@ -75,7 +70,6 @@ var productList = [
      {
         name: "Bag",
         price: 200,
-        topProduct: true,
         category : "Bag",
         imgUrl : "./images/product4.jpg"
     },
@@ -101,21 +95,18 @@ var productList = [
     {
         name: "Suit",
         price: 610,
-        topProduct: true,
         category: "Suit",
         imgUrl : "./images/product5.jpg"
     },
     {
         name: "Bag",
         price: 276,
-        topProduct: true,
         category: "Bag",
         imgUrl : "./images/product7.jpg"
     },
     {
         name: "Shoe",
         price: 450,
-        topProduct: true,
         category: "Shoe",
         imgUrl : "./images/product10.jpg"
     }
@@ -329,6 +320,65 @@ function getProductList(products, disableTopProductSort){
                 <div class="card-body text-center">
                     <h5>${obj.name}</h5>
                     <p>${obj.price}</p>
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Product category</label>
+                            <select class="form-control" id="categoryListSelect">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-product-name">Product title</label>
+                            <input type="text" class="form-control btn-light" id="input-product-name"
+                                aria-describedby="emailHelp" placeholder="">
+                            <sub id="error-msg-title" class="text-danger"></sub>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Price</label>
+                            <input type="number" class="form-control btn-light" id="input-product-price"
+                                aria-describedby="emailHelp" placeholder="">
+                            <sub id="error-msg-price" class="text-danger"></sub>
+                            <br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="topProduct">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Top Product
+                                </label>
+                            </div>
+                            <br>
+                            <label for="exampleInputEmail1">Upload product image</label><br>
+                            <input type="file" class="d-none" id="input-product-file" onchange="getFileName()"
+                                name="filename">
+                            <sub id="error-msg-file" class="text-danger"></sub>
+    
+                            <p class="text-info" id="fileName"></p>
+                            <button class="btn btn-outline-danger btn-sm" onclick="uploadBtn()">Upload</button>
+                        </div>
+                        <p id="errormsg" class="text-center text-primary"></p>
+                        <hr>
+      </div>
+      <div class="text-center">
+      <button type="button" onclick="addProduct()" class="btn btn-light mx-4">Submit</button>
+      <button id="cancelBtn" type="button" class="btn btn-danger mx-4"
+          data-dismiss="modal">Cancel</button>
+  </div>
+    </div>
+  </div>
+</div>
                 </div>
                 <br>
             </div>
@@ -361,7 +411,7 @@ function getProductList(products, disableTopProductSort){
    document.getElementById('product-item').innerHTML = productItem;
 
    if(!disableTopProductSort){
-        // document.getElementById('top-products').innerHTML = topProducts; 
+        document.getElementById('top-products').innerHTML = topProducts; 
    }
 }
 
@@ -381,7 +431,6 @@ $(document).ready(function(){
          {
             name: "Bag",
             price: 200,
-            topProduct: true,
             category : "Bag",
             imgUrl : "./images/product4.jpg"
         },
@@ -400,42 +449,36 @@ $(document).ready(function(){
          {
             name: "Shoe",
             price: 685,
-            topProduct: true,
             category: "Shoe",
             imgUrl : "./images/product9.jpg"
         },
         {
             name: "Suit",
             price: 610,
-            topProduct: true,
             category: "Suit",
             imgUrl : "./images/product5.jpg"
         },
         {
             name: "Bag",
             price: 276,
-            topProduct: true,
             category: "Bag",
             imgUrl : "./images/product7.jpg"
         },
         {
             name: "Shoe",
             price: 450,
-            topProduct: true,
             category: "Shoe",
             imgUrl : "./images/product10.jpg"
         },
         {
             name: "Shoe",
             price: 760,
-            topProduct: true,
             category: "Shoe",
             imgUrl : "./images/product8.jpg"
         },
         {
             name: "Bag",
             price: 476,
-            topProduct: true,
             category: "Bag",
             imgUrl : "./images/product7.jpg"
         },
@@ -448,7 +491,6 @@ $(document).ready(function(){
          {
             name: "Bag",
             price: 200,
-            topProduct: true,
             category : "Bag",
             imgUrl : "./images/product4.jpg"
         },
@@ -467,28 +509,24 @@ $(document).ready(function(){
          {
             name: "Shoe",
             price: 685,
-            topProduct: true,
             category: "Shoe",
             imgUrl : "./images/product9.jpg"
         },
         {
             name: "Suit",
             price: 610,
-            topProduct: true,
             category: "Suit",
             imgUrl : "./images/product5.jpg"
         },
         {
             name: "Bag",
             price: 276,
-            topProduct: true,
             category: "Bag",
             imgUrl : "./images/product7.jpg"
         },
         {
             name: "Shoe",
             price: 450,
-            topProduct: true,
             category: "Shoe",
             imgUrl : "./images/product10.jpg"
         }
